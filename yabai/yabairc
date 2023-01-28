@@ -1,0 +1,57 @@
+#!/usr/bin/env sh
+# Yabai WM Config
+
+# Load yabai script additions
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# Globals
+# bsp or float (default: float)
+yabai -m config layout bsp
+yabai -m config mouse_follows_focus on
+yabai -m config window_origin_display focused
+yabai -m config window_shadow off
+yabai -m config window_opacity_duration 0.0
+yabai -m config window_animation_duration 0.0
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+yabai -m config window_topmost off 
+# active border config
+yabai -m config  window_border on 
+yabai -m config window_border_width 2 
+yabai -m config active_window_border_color 0xFFBE123C
+yabai -m config normal_window_border_color 0xFF1F2937
+yabai -m config insert_feedback_color 0xFF1F2937 
+yabai -m config auto_balance off 
+yabai -m config split_ratio 0.5 
+yabai -m config mouse_modifier fn
+
+# Custom spaces for 3 desktops
+yabai -m space 1 --label one 
+yabai -m space 2 --label two 
+yabai -m space 3 --label three 
+yabai -m space 4 --label four 
+yabai -m space 5 --label five 
+yabai -m space 6 --label six 
+yabai -m space 7 --label seven 
+yabai -m space 8 --label eight 
+yabai -m space 9 --label nine 
+yabai -m space 10 --label ten
+
+# float system preferences. Most of these just diable Yabai form resizing them.
+yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Music$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Inko$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Microsoft Powerpoint$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^App Store$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^balenaEtcher$" sticky=on layer=above manage=off 
+yabai -m rule --add app="^Preview$" sticky=on layer=above manage=off 
+
+yabai -m signal --add event=window_destroyed action="bash /Users/sheke/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
+
