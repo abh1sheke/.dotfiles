@@ -1,0 +1,42 @@
+# Open iTerm2
+cmd - return : open -na /Applications/iTerm.app/Contents/MacOS/iTerm2
+
+# Restart yabai service
+ctrl + alt + cmd - r : launchctl kickstart - k "gui/${UID}/homebrew.mxcl.yabai"
+
+# Close active application
+rcmd - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
+# Rotate by 90
+rshift + ralt - r : yabai -m space --rotate 90
+
+shift + lalt + lcmd + ctrl - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
+shift + lalt + lcmd + ctrl - 2 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
+shift + lalt + lcmd + ctrl - 3 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '5' ]]; then yabai -m window --space 6; elif [[ '{}' = '6' ]]; then yabai -m window --space 5; fi"
+shift + lalt + lcmd + ctrl - 4 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '7' ]]; then yabai -m window --space 6; elif [[ '{}' = '8' ]]; then yabai -m window --space 7; fi"
+
+# Shift workspaces
+lcmd + rshift - 1 : yabai -m space --focus 1
+lcmd + rshift - 2 : yabai -m space --focus 2
+lcmd + rshift - 3 : yabai -m space --focus 3
+lcmd + rshift - 4 : yabai -m space --focus 4
+lcmd + rshift - 5 : yabai -m space --focus 5
+
+# Change current focused window
+rcmd - w : yabai -m window --focus north
+rcmd - a : yabai -m window --focus west
+rcmd - s : yabai -m window --focus south
+rcmd - d : yabai -m window --focus east
+
+# Swap windows
+rshift + rcmd - w : yabai -m window --swap north
+rshift + rcmd - a : yabai -m window --swap west
+rshift + rcmd - s : yabai -m window --swap south
+rshift + rcmd - d : yabai -m window --swap east
+
+# Move window to different space
+rshift + ralt - 1 : yabai -m window --space 1
+rshift + ralt - 2 : yabai -m window --space 2
+rshift + ralt - 3 : yabai -m window --space 3
+rshift + ralt - 4 : yabai -m window --space 4
+rshift + ralt - 5 : yabai -m window --space 5
