@@ -2,8 +2,8 @@
 # Yabai WM Config
 
 # Load yabai script additions
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # Globals
 # bsp or float (default: float)
