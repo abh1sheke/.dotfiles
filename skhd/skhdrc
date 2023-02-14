@@ -1,16 +1,17 @@
 # Restart yabai service
 ctrl + alt + cmd - r : launchctl kickstart - k "gui/${UID}/homebrew.mxcl.yabai"
 
+# Open Alacritty
+rcmd + rshift - t : osascript  ~/.config/scripts/open_app.scpt "Alacritty"
+
+# Open Brave Browser
+rcmd + rshift - w : osascript ~/.config/scripts/open_app.scpt "Brave Browser"
+
 # Close active application
 rcmd - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
 # Rotate by 90
 rshift + ralt - r : yabai -m space --rotate 90
-
-shift + lalt + lcmd + ctrl - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
-shift + lalt + lcmd + ctrl - 2 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
-shift + lalt + lcmd + ctrl - 3 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '5' ]]; then yabai -m window --space 6; elif [[ '{}' = '6' ]]; then yabai -m window --space 5; fi"
-shift + lalt + lcmd + ctrl - 4 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '7' ]]; then yabai -m window --space 6; elif [[ '{}' = '8' ]]; then yabai -m window --space 7; fi"
 
 # Shift workspaces
 lcmd + rshift - 1 : yabai -m space --focus 1
