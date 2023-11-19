@@ -1,3 +1,3 @@
-# abh1sheke's dotfiles
+# abh1sheke's dotfiles (DEPRECATED)
 
-Rome wasn't built in a day, give it some time :D
+I don't use this anymore.
